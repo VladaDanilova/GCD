@@ -13,27 +13,16 @@ public class LCM {
 
     private static long getLCM(int a, int b)
     {
-        int num1, num2;
-        long mult;
-        if (a > b)
-        {
-            num1 = a;
-            num2 = b;
-        }
-        else
-        {
-            num1 = b;
-            num2 = a;
-        }
-
-        for (int i = 1; i < num2; i++)
-        {
-            mult = num1 * i;
-            if (mult % num2 == 0)
-            {
-                return (long) mult;
+        return (long) (a / getGCD(a, b)) * b;
+    }
+    private static int getGCD(int a, int b) {
+        while (a != 0 && b != 0) {
+            if (a > b) {
+                a = a % b;
+            } else {
+                b = b % a;
             }
         }
-        return (long) num1*num2;
+        return a + b;
     }
 }
